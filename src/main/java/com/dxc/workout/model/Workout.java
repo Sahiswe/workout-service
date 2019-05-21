@@ -13,7 +13,7 @@ public class Workout {
 	private float caloriesBurnPerMin;
 	private List<Category> categories;
 	private List<Details> details;
-	
+	private String note;
 	
 	public List<Details> getDetails() {
 		return details;
@@ -21,7 +21,7 @@ public class Workout {
 	public void setDetails(List<Details> details) {
 		this.details = details;
 	}
-	private String note;
+	
 
 	public Workout(int _id, String workoutTitle, float caloriesBurnPerMin, List<Category> categories,
 			List<Details> details, String note) {

@@ -10,55 +10,57 @@ import com.dxc.workout.repo.CategoryRepo;
 
 @Service
 public class CategoryService {
-	
+
 	@Autowired
 	CategoryRepo categoryRepo;
-	
-	public List<Category> getAllCategories(){
+
+	public List<Category> getAllCategories() {
 		return categoryRepo.findAll();
-		
+
 	}
+
 	public boolean addCategory(Category category) {
-		if(find_id(category.get_id())!=null) {
-			//categoryRepo.deleteById(id);
+		if (find_id(category.get_id()) != null) {
+			// categoryRepo.deleteById(id);
 			return false;
-			
-		}else {
+
+		} else {
 			categoryRepo.save(category);
 			return true;
 		}
-		
+
 	}
-	
+
 	public Category findCategory(String categoryName) {
 		return categoryRepo.findByCategoryName(categoryName);
-		
+
 	}
+
 	public Category find_id(int _id) {
 		return categoryRepo.findBy_id(_id);
 	}
-	
+//	public Category deleteCategory(Category category) {
+//		categoryRepo.delete(category);
+//		return category;
+//	}
+
 	public boolean deleteById(int id) {
-		if(find_id(id)!=null) {
+		if (find_id(id) != null) {
 			categoryRepo.deleteById(id);
 			return true;
-			
-		}else
+
+		} else
 			return false;
-		
+
 	}
+
 	public boolean updateCategory(Category category) {
-		
-			if(find_id(category.get_id()) !=null){
-				return true;
-			}else {
-					categoryRepo.save(category);
-					return false;
-				}
+		if (find_id(category.get_id()) != null) {
+			categoryRepo.save(category);
+			return true;
+		} else {
+			return false;
 		}
 	}
-	
-	
 
-	
-
+}
